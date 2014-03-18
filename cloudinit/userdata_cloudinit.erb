@@ -1,6 +1,6 @@
 <%#
 kind: user_data
-name: EC2 UserData using cloudinit
+name: EC2 UserData via snippets
 oses:
 - CentOS 4
 - CentOS 5
@@ -10,6 +10,11 @@ oses:
 - Fedora 17
 - Fedora 18
 - Fedora 19
+- Debian 6.0
+- Debian 7.0
+- Ubuntu 10.04
+- Ubuntu 12.04
+- Ubuntu 13.04
 -%>
 #cloud-config
 hostname: <%= @host.shortname %>
@@ -19,3 +24,4 @@ manage_etc_hosts: true
 <%# Contact Foreman to confirm instance is built -%>
 phone_home:
  url: <%= foreman_url('built') %>
+ tries: 10
